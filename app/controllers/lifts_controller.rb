@@ -15,6 +15,6 @@ class LiftsController < ApplicationController
   private
 
   def lift_params
-    params.require(:lift).permit(:date, :liftname, :ismetric, :weightlifted, :repsperformed)
+    params.require(:lift).permit(:date, :liftname, :ismetric, :weightlifted, :repsperformed, :onerm)
   end
 end
