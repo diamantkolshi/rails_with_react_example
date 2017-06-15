@@ -7,33 +7,29 @@ class Students extends React.Component {
 
   render () {
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th><abbr title="Position">ID</abbr></th>
-            <th><abbr title="Played">Name</abbr></th>
-            <th><abbr title="Won">Surname</abbr></th>
-            <th><abbr title="Drawn">Age</abbr></th>
-            <th><abbr title="Lost">Total point</abbr></th>
-            <th><abbr title="Goals for">Subject count</abbr></th>
-            <th><abbr title="Goals against">Average</abbr></th>=
-          </tr>
-        </thead>
-        <tbody>
-        {this.props.students.map(function(student){
-          return (
+      <div>
+        <CreateStudent></CreateStudent>
+        <table className="table margin-top-50px">
+          <thead>
             <tr>
-              <th>{student.id}</th>
-              <td>{student.name}</td>
-              <td>{student.surname}</td>
-              <td>{student.age}</td>
-              <td>{student.total_point}</td>
-              <td>{student.subject_count}</td>
-              <td>{student.average}</td>
-            </tr>)
-        })}
-        </tbody>
-      </table>
+              <th><abbr title="Position">ID</abbr></th>
+              <th><abbr title="Played">Name</abbr></th>
+              <th><abbr title="Won">Surname</abbr></th>
+              <th><abbr title="Drawn">Age</abbr></th>
+              <th><abbr title="Lost">Total point</abbr></th>
+              <th><abbr title="Goals for">Subject count</abbr></th>
+              <th><abbr title="Goals against">Average</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.students.map(function(student){
+              return (
+                <StudentItem student={student} key={student.id}></StudentItem>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
     )
   }
 }
