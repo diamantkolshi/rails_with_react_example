@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  surname: MyString
+  age: 1
+  total_point: 1
+  subject_count: 1
+  average: 9.99
+
+two:
+  name: MyString
+  surname: MyString
+  age: 1
+  total_point: 1
+  subject_count: 1
+  average: 9.99
