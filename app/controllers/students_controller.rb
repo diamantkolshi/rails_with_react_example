@@ -5,11 +5,12 @@ class StudentsController < ApplicationController
 
   def create
   	@student = Student.new(student_params)
-  	if @lift.save
-  		render json: @student
-  	else
-  		render json: @student.errors, status: :unprocessable_entity
-  	end
+  	render json: @student
+  	# if @lift.save
+  	# 	render json: @student
+  	# else
+  	# 	render json: @student.errors, status: :unprocessable_entity
+  	# end
   end
 
   def show 
@@ -18,7 +19,7 @@ class StudentsController < ApplicationController
 
   private
 
-  def student_params
+  def student_params 
   	params.require(:student).permit(:name, :surname, :age, :total_point, :subject_count, :average)
   end
 end
