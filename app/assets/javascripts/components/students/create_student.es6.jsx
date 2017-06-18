@@ -26,14 +26,16 @@ const CreateStudent = React.createClass({
 
 	handleSubmit: function(e) {
 		e.preventDefault();
-		// $.ajax({ 
-		// 	url: '/students', 
-		// 	type: 'POST',  
-		// 	data: { student: { name: "asdas" }, 
-		// 	success: (response) => { 
-		// 		// return result 
-		// 	});
-	},
+		$.ajax({
+      url: '/students',
+      type: 'POST',
+      data: { student: this.state },
+      success: function(result) {
+				// result
+				debugger;
+      }
+    });
+  },
 
 	method_1: function() {
 		debugger;
@@ -66,7 +68,7 @@ const CreateStudent = React.createClass({
 			      </p>
 			      <AverageBox average={this.averageRes()}></AverageBox>
 			      <p className="control is-expanded has-icons-left">
-			      	<button className="button is-primary" onClick={this.method_1}>
+			      	<button className="button is-primary" onClick={this.handleSubmit}>
 			          Create Student
 			        </button>
 			      </p>			      
