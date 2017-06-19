@@ -8,7 +8,7 @@ class LiftsController < ApplicationController
     if @lift.save
       render json: @lift
     else
-      render josn: @lift.errors, status: :unprocessable_entity
+      render json: @lift.errors, status: :unprocessable_entity
     end
   end
 
