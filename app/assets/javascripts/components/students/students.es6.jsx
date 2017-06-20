@@ -1,14 +1,26 @@
-class Students extends React.Component {
-	constructor(props){
-		super(props)
-		this.state = {
+const Students = React.createClass({
+	getInitialState: function(){
+		return {
+      students: this.props.students
 		}
-	}
+	},
 
-  render () {
+  getDefaultProps: function(){
+    return {
+      students: []
+    }
+  },
+
+  addStudent: function(student){
+    students = this.state.students.slice();
+    students.push(student);
+    this.setState({students: students})
+  },
+
+  render: function() {
     return (
       <div>
-        <CreateStudent></CreateStudent>
+        <CreateStudent handleNewStudent={this.addStudent}></CreateStudent>
         <table className="table margin-top-50px">
           <thead>
             <tr>
@@ -22,7 +34,7 @@ class Students extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.students.map(function(student){
+            {this.state.students.map(function(student){
               return (
                 <StudentItem student={student} key={student.id}></StudentItem>
               )
@@ -32,7 +44,7 @@ class Students extends React.Component {
       </div>
     )
   }
-}
+});
 
 
 
