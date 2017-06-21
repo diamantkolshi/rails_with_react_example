@@ -33,12 +33,10 @@ const CreateStudent = React.createClass({
       data: { student: this.state },
       success: function(data) {
       	_this.props.handleNewStudent(data);
-      	_this.setState(this.getInitialState);
+      	_this.setState(_this.getInitialState);
       }
     });
   },
-
-
 
   render: function() {
     return (
