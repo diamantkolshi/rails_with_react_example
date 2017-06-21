@@ -1,9 +1,29 @@
 const StudentItem = React.createClass({
   getInitialState: function(){
     return {
-      edit: false
+      name: this.props.student.name,
+      surname: this.props.student.surname,
+      age: this.props.student.age,
+      total_point: this.props.student.total_point,
+      subject_count: this.props.student.subject_count,
+      average: this.props.student.average
     };
   },
+
+  handleValueChange: function(e) {
+    this.setState({[e.target.name]: e.target.value});
+  },
+
+  averageRes: function(){
+    if(this.state.total_point != 0 && this.state.subject_count != 0) {
+      this.state.average = this.state.total_point / this.state.subject_count
+    }
+    else {
+      this.state.average = 0
+    }
+    return this.state.average
+  },
+
 
   handleDelete: function(e) {
     var _this = this
@@ -73,9 +93,7 @@ const StudentItem = React.createClass({
               </p>
             </td>
             <td>
-              <p className="control is-expanded has-icons-left">
-                <input className="input" style={{width: '200px'}} type="number"  defaultValue={this.props.student.average} name="subject_count" onChange={this.handleValueChange} placeholder="Subject Number" disabled/>
-              </p>
+               <AverageBox average={this.averageRes()}></AverageBox>
             </td>
             <td>
               <p className="control is-expanded has-icons-left">
