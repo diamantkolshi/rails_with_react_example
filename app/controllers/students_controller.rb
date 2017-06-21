@@ -5,16 +5,22 @@ class StudentsController < ApplicationController
 
   def create
   	@student = Student.new(student_params)
-  	render json: @student
-  	# if @lift.save
-  	# 	render json: @student
-  	# else
-  	# 	render json: @student.errors, status: :unprocessable_entity
-  	# end
+  	if @student.save
+  		render json: @student
+  	else
+  		render json: @student.errors, status: :unprocessable_entity
+  	end
   end
 
   def show 
   	@student = Student.first
+  end
+
+  def destroy
+
+    # @student = Student.find(params[:id])
+    # @student.destroy
+    # head :no_content
   end
 
   private
