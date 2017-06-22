@@ -24,6 +24,13 @@ const Students = React.createClass({
     this.replaceState({students: students})
   },
 
+  updateStudent: function(student, data){
+    index = this.state.students.indexOf(student)
+    students = this.state.students
+    students[index] = data
+    this.replaceState({students: students})
+  },
+
   render: function() {
     var _this = this
     return (
@@ -32,7 +39,6 @@ const Students = React.createClass({
         <table className="table margin-top-50px">
           <thead>
             <tr>
-              <th><abbr title="Position">ID</abbr></th>
               <th><abbr title="Played">Name</abbr></th>
               <th><abbr title="Won">Surname</abbr></th>
               <th><abbr title="Drawn">Age</abbr></th>
@@ -45,7 +51,7 @@ const Students = React.createClass({
           <tbody>
             {this.state.students.map(function(student){
               return (
-                <StudentItem handleDeleteStudent={_this.deleteStudent} student={student} key={student.id} ></StudentItem>
+                <StudentItem handleDeleteStudent={_this.deleteStudent} handleUpdateStudent={_this.updateStudent} student={student} key={student.id} ></StudentItem>
               )
             })}
           </tbody>
