@@ -58,26 +58,28 @@ const StudentItem = React.createClass({
     this.setState({edit: !this.state.edit, total_point: this.props.student.total_point, subject_count: this.props.student.subject_count, average: this.props.student.average});
   },
 
-  render: function() { 
-    var body = <tr>
-        <td>{this.props.student.name}</td>     
-        <td>{this.props.student.surname}</td>
-        <td>{this.props.student.age}</td>
-        <td>{this.props.student.total_point}</td>
-        <td>{this.props.student.subject_count}</td>
-        <td>{this.props.student.average}</td>
-        <td>
-          <button className="button is-info" onClick={this.handleToggl}>
-            Edit
-          </button>
-          <button className="button is-danger" onClick={this.handleDelete} >
-            Delete
-          </button>
-        </td>
-      </tr>;
+  studentRow: function(){
+      RowBody = <tr>
+              <td>{this.props.student.name}</td>     
+              <td>{this.props.student.surname}</td>
+              <td>{this.props.student.age}</td>
+              <td>{this.props.student.total_point}</td>
+              <td>{this.props.student.subject_count}</td>
+              <td>{this.props.student.average}</td>
+              <td>
+                <button className="button is-info" onClick={this.handleToggl}>
+                  Edit
+                </button>
+                <button className="button is-danger" onClick={this.handleDelete} >
+                  Delete
+                </button>
+              </td>
+            </tr>;
+      return RowBody;
+  },
 
-    if(this.state.edit == true){
-        body = <tr>
+  studentForm: function(){
+    formBody = <tr>
             <td>
               <p className="control is-expanded has-icons-left">
                 <input className="input" style={{width: '200px'}} type="text" name="name" defaultValue={this.props.student.name} onChange={this.handleValueChange} placeholder="Name"  />
@@ -120,10 +122,18 @@ const StudentItem = React.createClass({
               </p>  
             </td>     
         </tr>;
-    }
+      return formBody
+  },
 
+  render: function() { 
+    var body = this.studentRow();
+
+    if(this.state.edit == true){
+      body = this.studentForm();
+    }
+  
     return (
-      body
+      body 
     ) 
   }
 });
