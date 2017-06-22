@@ -1,6 +1,7 @@
 const StudentItem = React.createClass({
   getInitialState: function(){
     return {
+      edit: false,
       name: this.props.student.name,
       surname: this.props.student.surname,
       age: this.props.student.age,
@@ -24,7 +25,6 @@ const StudentItem = React.createClass({
     return this.state.average
   },
 
-
   handleDelete: function(e) {
     var _this = this
     e.preventDefault()
@@ -37,14 +37,29 @@ const StudentItem = React.createClass({
       }
     });
   },
+
+  handleUpdate: function(e){
+    var _this = this
+    e.preventDefault();
+    $.ajax({
+      url: "/students/" + _this.props.student.id,
+      type: 'PUT',
+      dataType: 'JSON',
+      data: { student: _this.state },
+      success: function(data) {
+        _this.setState({edit: false})
+        _this.props.handleUpdateStudent(_this.props.student, data)
+      }
+    });    
+  },
+
   handleToggl: function(e){
     e.preventDefault();
-    this.setState({edit: !this.state.edit})
+    this.setState({edit: !this.state.edit, total_point: this.props.student.total_point, subject_count: this.props.student.subject_count, average: this.props.student.average});
   },
 
   render: function() { 
     var body = <tr>
-        <th>{this.props.student.id}</th>
         <td>{this.props.student.name}</td>     
         <td>{this.props.student.surname}</td>
         <td>{this.props.student.age}</td>
@@ -63,7 +78,6 @@ const StudentItem = React.createClass({
 
     if(this.state.edit == true){
         body = <tr>
-            <td>{this.props.student.id}</td>
             <td>
               <p className="control is-expanded has-icons-left">
                 <input className="input" style={{width: '200px'}} type="text" name="name" defaultValue={this.props.student.name} onChange={this.handleValueChange} placeholder="Name"  />
@@ -100,7 +114,7 @@ const StudentItem = React.createClass({
                 <button className="button is-info" onClick={this.handleToggl}>
                   Cancel
                 </button>
-                <button className="button is-success">
+                <button className="button is-success" onClick={this.handleUpdate}>
                   update
                 </button>
               </p>  
