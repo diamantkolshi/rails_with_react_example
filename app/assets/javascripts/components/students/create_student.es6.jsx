@@ -25,21 +25,18 @@ const CreateStudent = React.createClass({
 	},
 
 	handleSubmit: function(e) {
-		e.preventDefault();
+		var _this = this
+		e.preventDefault();	
 		$.ajax({
       url: '/students',
       type: 'POST',
       data: { student: this.state },
-      success: function(result) {
-				// result
-				debugger;
+      success: function(data) {
+      	_this.props.handleNewStudent(data);
+      	_this.setState(_this.getInitialState);
       }
     });
   },
-
-	method_1: function() {
-		debugger;
-	},
 
   render: function() {
     return (
