@@ -31,11 +31,16 @@ const Students = React.createClass({
     this.replaceState({students: students})
   },
 
+  searchStudent: function(students) {
+    this.replaceState({students: students})
+  },
+
   render: function() {
     var _this = this
     return (
       <div>
-        <CreateStudent handleNewStudent={this.addStudent} ></CreateStudent>
+        <CreateStudent handleNewStudent={this.addStudent} ></CreateStudent><br/>
+        <SearchStudent handleSearchStudents={this.searchStudent}></SearchStudent>
         <table className="table margin-top-50px">
           <thead>
             <tr>
