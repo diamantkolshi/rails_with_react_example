@@ -31,6 +31,11 @@ class StudentsController < ApplicationController
     head :no_content
   end
 
+  def search
+    @students = Student.search(params[:keyword])
+    render json: @students
+  end
+
   private
 
   def student_params
