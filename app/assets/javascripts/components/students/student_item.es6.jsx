@@ -59,23 +59,23 @@ const StudentItem = React.createClass({
   },
 
   studentRow: function(){
-      RowBody = <tr>
-              <td>{this.props.student.name}</td>     
-              <td>{this.props.student.surname}</td>
-              <td>{this.props.student.age}</td>
-              <td>{this.props.student.total_point}</td>
-              <td>{this.props.student.subject_count}</td>
-              <td>{this.props.student.average}</td>
-              <td>
-                <button className="button is-info" onClick={this.handleToggl}>
-                  Edit
-                </button>
-                <button className="button is-danger" onClick={this.handleDelete} >
-                  Delete
-                </button>
-              </td>
-            </tr>;
-      return RowBody;
+    RowBody = <tr>
+            <td>{this.props.student.name}</td>     
+            <td>{this.props.student.surname}</td>
+            <td>{this.props.student.age}</td>
+            <td>{this.props.student.total_point}</td>
+            <td>{this.props.student.subject_count}</td>
+            <td>{this.props.student.average}</td>
+            <td>
+              <button className="button is-info" onClick={this.handleToggl}>
+                Edit
+              </button>
+              <button className="button is-danger" onClick={this.handleDelete} >
+                Delete
+              </button>
+            </td>
+          </tr>;
+    return RowBody;
   },
 
   studentForm: function(){
