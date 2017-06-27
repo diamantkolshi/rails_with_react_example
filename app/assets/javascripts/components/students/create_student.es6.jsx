@@ -34,6 +34,9 @@ const CreateStudent = React.createClass({
       success: function(data) {
       	_this.props.handleNewStudent(data);
       	_this.setState(_this.getInitialState);
+      },
+      error: function(data) {
+      	_this.props.handleFlashError(data.responseJSON.error)
       }
     });
   },
@@ -75,6 +78,3 @@ const CreateStudent = React.createClass({
     )
   }
 });
-
-
-
