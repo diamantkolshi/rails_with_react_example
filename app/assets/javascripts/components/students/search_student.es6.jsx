@@ -5,8 +5,9 @@ class SearchStudent extends React.Component {
     }
   } 
 
-  handleSearch(e, keyword) {
+  handleSearch(e) {
     var _this = this
+    var keyword = e.target.value
     e.preventDefault(); 
     $.ajax({
       url: "/students/search",
@@ -23,12 +24,7 @@ class SearchStudent extends React.Component {
       <form>
       	<div className="field has-addons search-field">
           <p className="control">
-            <input className="input" id="search-field" name="kayword" type="text" placeholder="Search student"/>
-          </p>
-          <p className="control">
-            <a className="button is-info" onClick={e => this.handleSearch(e, $('#search-field')[0].value)}>
-              Search
-            </a>
+            <input className="input" id="search-field" name="kayword" type="text" placeholder="Search student" onChange={e => this.handleSearch(e)}/>
           </p>
         </div>
       </form>
