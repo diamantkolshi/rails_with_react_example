@@ -1,7 +1,8 @@
 const Students = React.createClass({
 	getInitialState: function(){
 		return {
-      students: this.props.students
+      students: this.props.students,
+      errors: ""
 		}
 	},
 
@@ -35,11 +36,16 @@ const Students = React.createClass({
     this.replaceState({students: students})
   },
 
+  flashError: function(errors) {
+    this.setState({errors: errors})
+  },
+
   render: function() {
-    var _this = this
+    var _this = this;
     return (
       <div>
-        <CreateStudent handleNewStudent={this.addStudent} ></CreateStudent><br/>
+        <FlashBox errors={this.state.errors} handleFlashError={this.flashError}></FlashBox>
+        <CreateStudent handleFlashError={this.flashError} handleNewStudent={this.addStudent} ></CreateStudent><br/>
         <SearchStudent handleSearchStudents={this.searchStudent}></SearchStudent>
         <table className="table margin-top-50px">
           <thead>
@@ -65,6 +71,3 @@ const Students = React.createClass({
     )
   }
 });
-
-
-
