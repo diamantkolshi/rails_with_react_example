@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
     if @student.save
       render json: @student
     else
-      render json: @student.errors, status: :unprocessable_entity
+      render :json => { :error => @student.errors.full_messages }, status: 422 
     end
   end
 
@@ -21,7 +21,7 @@ class StudentsController < ApplicationController
     if @student.update(student_params)
       render json: @student
     else
-      render json: @student.error, status: :unprocessable_entity
+      render json: @student.error.messages
     end
   end
 
