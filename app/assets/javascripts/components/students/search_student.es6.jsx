@@ -1,11 +1,5 @@
-class SearchStudent extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-    }
-  } 
-
-  handleSearch(e) {
+const SearchStudent = React.createClass({
+  handleSearch: function(e) {
     var _this = this
     var keyword = e.target.value
     e.preventDefault(); 
@@ -17,9 +11,9 @@ class SearchStudent extends React.Component {
         _this.props.handleSearchStudents(data)
       }
     });
-  }
+  },
 
-  render() {
+  render: function() {
     return (
       <form>
       	<div className="field has-addons search-field">
@@ -30,7 +24,7 @@ class SearchStudent extends React.Component {
       </form>
     )
   }
-}
+})
 
 
 
