@@ -23,7 +23,13 @@ class Header extends React.Component {
     });
   }
 
+  togglClockShow() {
+  	setState({showClock: !this.showClock})
+  }
+
 	render() {
+		let clock = "Show clock"
+				         
 		return (
 			<div>
 				<nav className="nav">
@@ -63,14 +69,13 @@ class Header extends React.Component {
 				    <a className="nav-item">
 				      Lifts
 				    </a>
-
 				    <div className="nav-item">
 				      <div className="field is-grouped">
 				        <p className="control">
-				          <a className="button" >
-				            {this.state.date.toLocaleTimeString()}
-				          </a>
-				        </p>
+						      <a className="button">
+						      	{clock}
+						      </a>
+						    </p>
 				        <p className="control">
 				          <a className="button is-primary">
 				            <span className="icon">
