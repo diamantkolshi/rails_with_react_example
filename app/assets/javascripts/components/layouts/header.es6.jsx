@@ -2,7 +2,8 @@ class Header extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			date: new Date()
+			date: new Date(),
+			showClock: false
 		};
 	}
 
@@ -23,7 +24,21 @@ class Header extends React.Component {
     });
   }
 
+  togglClockShow() {
+  	this.setState({showClock: !this.state.showClock})
+  }
+
 	render() {
+		let clock = <a className="button" onClick={this.togglClockShow.bind(this)}>
+					      	Show clock
+					      </a>
+
+		if(this.state.showClock){
+			clock = <a className="button" onClick={this.togglClockShow.bind(this)}>
+					      {this.state.date.toLocaleTimeString()}
+					    </a>
+		}
+				         
 		return (
 			<div>
 				<nav className="nav">
@@ -63,14 +78,11 @@ class Header extends React.Component {
 				    <a className="nav-item">
 				      Lifts
 				    </a>
-
 				    <div className="nav-item">
 				      <div className="field is-grouped">
 				        <p className="control">
-				          <a className="button" >
-				            {this.state.date.toLocaleTimeString()}
-				          </a>
-				        </p>
+				        	{clock}
+						    </p>
 				        <p className="control">
 				          <a className="button is-primary">
 				            <span className="icon">
